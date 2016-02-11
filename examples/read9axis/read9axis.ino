@@ -16,6 +16,15 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  int ax, ay, az;
+  int gx, gy, gz;
+  int mx, my, mz;
+  uint16_t temp;
+  
+  fabo9axis.readAccelXYZ(&ax, &ay, &az);
+  fabo9axis.readGyroXYZ(&gx, &gy, &gz);
+  fabo9axis.readMagnetXYZ(&mx, &my, &mz);
+  temp = fabo9axis.readTemperature();
 
+  delay(1000);
 }
