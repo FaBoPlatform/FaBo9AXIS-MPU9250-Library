@@ -39,7 +39,7 @@ void loop() {
   Serial.print(" gy: ");
   Serial.print(gy);
   Serial.print(" gz: ");
-  Serial.println(az);
+  Serial.println(gz);
 
   Serial.print("mx: ");
   Serial.print(mx);
