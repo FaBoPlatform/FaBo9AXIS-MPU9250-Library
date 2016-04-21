@@ -1,15 +1,30 @@
-#include "fabo-mpu9250.h"
-#include "Wire.h"
+/**
+ @file read9axis.ino
+ @brief This is an Example for the FaBo 9Axis I2C Brick.
 
-FaBo9Axis fabo9axis;
+   http://fabo.io/202.html
+
+   Released under APACHE LICENSE, VERSION 2.0
+
+   http://www.apache.org/licenses/
+
+ @author FaBo<info@fabo.io>
+*/
+
+#include <Wire.h>
+#include <FaBo9Axis_MPU9250.h>
+
+FaBo9Axis fabo_9axis;
 
 void setup() {
   Serial.begin(9600);
-  // デバイス初期化
-  Serial.println("Checking I2C device...");
-  if (fabo9axis.searchDevice()) {
-    Serial.println("I am MPU9250");
-    fabo9axis.configuration();
+  Serial.println("RESET");
+  Serial.println();
+
+  Serial.println("configuring device.");
+
+  if (fabo_9axis.begin()) {
+    Serial.println("configured FaBo 9Axis I2C Brick");
   } else {
     Serial.println("device error");
     while(1);
@@ -17,15 +32,15 @@ void setup() {
 }
 
 void loop() {
-  int ax, ay, az;
-  int gx, gy, gz;
-  int mx, my, mz;
-  uint16_t temp;
-  
-  fabo9axis.readAccelXYZ(&ax, &ay, &az);
-  fabo9axis.readGyroXYZ(&gx, &gy, &gz);
-  fabo9axis.readMagnetXYZ(&mx, &my, &mz);
-  temp = fabo9axis.readTemperature();
+  float ax,ay,az;
+  float gx,gy,gz;
+  float mx,my,mz;
+  float temp;
+
+  fabo_9axis.readAccelXYZ(&ax,&ay,&az);
+  fabo_9axis.readGyroXYZ(&gx,&gy,&gz);
+  fabo_9axis.readMagnetXYZ(&mx,&my,&mz);
+  fabo_9axis.readTemperature(&temp);
 
   Serial.print("ax: ");
   Serial.print(ax);
