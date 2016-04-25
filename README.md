@@ -4,7 +4,7 @@ This is a library for FaBo #202 9Axis I2C Brick.
 
 ## FaBo 9Axis I2C Brick
 
-[#208 Humidity I2C Brick](http://fabo.io/208.html)
+[#202 9Axis I2C Brick](http://fabo.io/202.html)
 
 ## MPU-9250
 
