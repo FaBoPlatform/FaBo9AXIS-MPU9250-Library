@@ -270,7 +270,7 @@ void FaBo9Axis::writeI2c(uint8_t address, uint8_t register_addr, uint8_t data) {
 void FaBo9Axis::readI2c(uint8_t address, uint8_t register_addr, uint8_t num, uint8_t * buffer) {
   Wire.beginTransmission(address);
   Wire.write(register_addr);
-  Wire.endTransmission(false);
+  Wire.endTransmission();
   uint8_t i = 0;
   Wire.requestFrom(address, num);
   while( Wire.available() ) {
